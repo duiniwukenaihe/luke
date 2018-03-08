@@ -1,0 +1,146 @@
+{{!--
+/*
+ * Your installation or use of this SugarCRM file is subject to the applicable
+ * terms available at
+ * http://support.sugarcrm.com/Resources/Master_Subscription_Agreements/.
+ * If you do not agree to all of the applicable terms or do not have the
+ * authority to bind the entity as an authorized representative, then do not
+ * install or use this SugarCRM file.
+ *
+ * Copyright (C) SugarCRM Inc. All rights reserved.
+ */
+--}}
+<link rel="stylesheet" type="text/css" href="custom/themes/mailchimp-styles.css">
+<h3>{{str "LBL_MAILCHIMP_CAMPAIGN_SUMMARY"}}</h3>
+<div class="row-fluid">
+    <div class="span12">
+        {{#each dashletConfig.mailchimp_campaigns}}
+            {{field ../this model=../this.settings template="edit"}}
+        {{/each}}
+    </div>
+</div>
+{{#if summary}}
+    <div class="mailchimp-campaign">
+        {{#if summary.recipient_count}}
+            <h3><span>{{summary.recipient_count}}</span> {{str "LBL_MAILCHIMP_RECIPIENTS"}}</h3>
+        {{/if}}
+        
+        {{#if summary.list_name}}
+            <div class="dotted-row">
+                <p><b>{{str "LBL_MAILCHIMP_LIST"}}</b> {{summary.list_name}}</p>
+            </div>
+        {{/if}}
+
+        {{#if summary.subject_line}}
+            <div class="dotted-row">
+                <p><b>{{str "LBL_MAILCHIMP_SUBJECT"}}</b> {{summary.subject_line}}</p>
+            </div>
+        {{/if}}
+        
+        {{#if summary.send_time}}
+            <div class="dotted-row">
+                <p><b>{{str "LBL_MAILCHIMP_DELIVERED"}}</b> {{summary.send_time}}</p>
+                <!-- <p><a href="#">{{str "LBL_MAILCHIMP_VIEW_EMAIL"}}</a></p> -->
+            </div>
+        {{/if}}
+
+        <div class="dotted-row">
+            {{#if summary.opens.open_rate}}
+                <p><b>{{str "LBL_MAILCHIMP_OPEN_RATE"}}</b> {{summary.opens.open_rate}}%</p>
+                <!-- <span>{{str "LBL_MAILCHIMP_PROGRESS_BAR"}}</span> -->
+            {{/if}}
+
+            <p>
+                {{#if summary.industry_stats.type}}
+                    {{str "LBL_MAILCHIMP_INDUSTRY_AVG"}} <span>({{summary.industry_stats.type}})</span> 
+                {{/if}}
+
+                {{#if summary.industry_stats.open_rate}}
+                    {{summary.industry_stats.open_rate}}%
+                {{/if}}
+            </p>
+        </div>
+
+        <div class="dotted-row">
+            {{#if summary.clicks.click_rate}}
+                <p><b>{{str "LBL_MAILCHIMP_CLICK_RATE"}}</b> {{summary.clicks.click_rate}}%</p>
+                <!-- <span>{{str "LBL_MAILCHIMP_PROGRESS_BAR"}}</span> -->
+            {{/if}}
+
+            <p>
+                {{#if summary.industry_stats.type}}
+                    {{str "LBL_MAILCHIMP_INDUSTRY_AVG"}} <span>({{summary.industry_stats.type}})</span>
+                {{/if}}
+
+                {{#if summary.industry_stats.click_rate}}
+                    {{summary.industry_stats.click_rate}}%
+                {{/if}}
+            </p>
+        </div>                
+        
+        <div class="summary-stats">
+            <ul>
+                <li>
+                    <p>
+                        <strong>
+                            {{summary.opens.opens_total}}
+                        </strong>
+                    </p>
+                    <span>{{str "LBL_MAILCHIMP_OPENS"}}</span>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            {{summary.clicks.clicks_total}}
+                        </strong>
+                    </p>
+                    <span>{{str "LBL_MAILCHIMP_CLICKED"}}</span>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            {{summary.bounces.hard_bounces}}
+                        </strong>
+                    </p>
+                    <span>{{str "LBL_MAILCHIMP_BOUNCED"}}</span>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            {{summary.unsubscribed}}
+                        </strong>
+                    </p>
+                    <span>{{str "LBL_MAILCHIMP_UNSUBSCRIBED"}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_SUCCESSFUL_DELIVERIES"}}</b> {{summary.emails_sent}}<!--  (99%) --></p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_TOTAL_OPENS"}}</b> {{summary.opens.opens_total}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_LAST_OPENED"}}</b> {{summary.opens.last_open}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_FORWARDS"}}</b> {{summary.forwards.forwards_count}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_CLICKS_PER_UNIQUE_OPENS"}}</b> {{summary.opens.unique_opens}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_TOTAL_CLICKS"}}</b> {{summary.clicks.clicks_total}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_LAST_CLICKED"}}</b> {{summary.clicks.last_click}}</p>
+        </div>
+        <div class="dotted-row">
+            <p><b>{{str "LBL_MAILCHIMP_ABUSE_REPORTS"}}</b> {{summary.abuse_reports}}</p>
+        </div>
+    </div>
+{{else}}
+    {{#if campaign_id}}
+        <div class="no-record">{{str "LBL_MAILCHIMP_NO_MAILCHIMP_SUMMARY_FOUND"}}</div>
+    {{/if}}
+{{/if}}

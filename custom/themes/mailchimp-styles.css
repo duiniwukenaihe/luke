@@ -1,0 +1,207 @@
+.mailchimp-dashlet {
+  max-height: inherit !important;
+  padding: 10px;
+}
+.mailchimp-dashlet .no-record {
+  text-align: center;
+}
+/* mailchimp list */
+.mailchimp-dashlet.list {
+  padding: 20px 12px;
+}
+.mailchimp-dashlet.list .list-info h5 {
+  margin: 0;
+}
+.mailchimp-dashlet.list .list-info h5 span {
+  font-weight: normal;
+}
+.mailchimp-dashlet.list .list-info .favorit-list {
+  float: right;
+}
+.mailchimp-dashlet.list .list-info .favorit-list li {
+  display: inline-block;
+}
+.mailchimp-dashlet.list .list-info .favorit-list li .fa {
+  font-size: 18px;
+  margin: 0 3px;
+}
+.mailchimp-dashlet.list .list-info .favorit-list li .fa-star,
+.mailchimp-dashlet.list .list-info .favorit-list li .fa-star-half-full {
+  color: #ffbe10;
+}
+.mailchimp-dashlet.list .list-stats {
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 10px;
+}
+.mailchimp-dashlet.list .list-stats li {
+  display: inline-block;
+  width: 25%;
+}
+.mailchimp-dashlet.list .list-stats li h3 {
+  color: #007acc;
+  margin: 10px 0 0 0;
+  line-height: 18px;
+}
+.mailchimp-dashlet.list .list-stats li h3 span {
+  font-weight: normal;
+  font-size: 12px;
+  display: block;
+  color: #777;
+  padding-top: 3px;
+}
+/* mailchimp activity */
+.mailchimp-dashlet.activity #mailchimp_list_id {
+  width: 95%;
+  max-width: 517px;
+}
+.mailchimp-dashlet.activity .row-fluid {
+  margin: 0 0 10px 0;
+}
+.mailchimp-dashlet.activity .tesimonial-main {
+  position: relative;
+  overflow: hidden;
+  max-width: 576px;
+  display: flex;
+}
+.mailchimp-dashlet.activity .date-box {
+  overflow: hidden;
+  text-align: center;
+  padding-top: 10px;
+  max-width: 50px;
+  width: 100%;
+}
+.mailchimp-dashlet.activity .date-box date {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #868383;
+}
+.mailchimp-dashlet.activity .date-box time {
+  display: block;
+  color: #b3b2b2;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 10px 0 5px;
+}
+.mailchimp-dashlet.activity .date-box .icon-box {
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  background: #7ccde2;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.mailchimp-dashlet.activity .tesimonial-main .email-link a {
+  color: #67c5de;
+}
+.mailchimp-dashlet.activity .tesimonial-box {
+  color: #8e8e8d;
+  position: relative;
+  min-height: 100px;
+  font-size: 14px;
+  padding: 15px;
+  margin: 0 15px 6px 15px;
+  background: #fff;
+  border: 1px solid #d8d6d6;
+  border-radius: 4px;
+  width: calc(74%);
+}
+.mailchimp-dashlet.activity .tesimonial-box > p {
+  margin: 0 0 8px;
+}
+.mailchimp-dashlet.activity .tesimonial-box:after {
+  top: 70%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(216, 214, 214, 0);
+  border-width: 9px;
+  margin-top: -9px;
+}
+.mailchimp-dashlet.activity .tesimonial-box:before {
+  top: 70%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(216, 214, 214, 0);
+  border-width: 10px;
+  margin-top: -10px;
+}
+.mailchimp-dashlet.activity .notification-heading {
+  margin: 0 0 15px;
+  background: #efefef;
+  padding: 5px;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+.mailchimp-dashlet.activity .tesimonial-box.left-arrow:after {
+  right: 100%;
+  border-right-color: #fff;
+}
+.mailchimp-dashlet.activity .tesimonial-box.left-arrow:before {
+  right: 100%;
+  border-right-color: #d8d6d6;
+}
+/* mailchimp campaign summary */
+.mailchimp-dashlet.campaign-summary .row-fluid {
+  margin: 0 0 10px 0;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign > h3 {
+  font-size: 18px;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign > h3 > span {
+  color: #2eb9d8;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .dotted-row {
+  padding: 10px 0;
+  border: dashed 1px #ccc;
+  border-width: 1px 0 0;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .dotted-row p {
+  font-size: 13px;
+  color: #777;
+  margin: 0 0 15px;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .dotted-row p a,
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .dotted-row p span {
+  color: #2eb9d8;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .dotted-row p:last-child {
+  margin-bottom: 0;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 15px 0 25px;
+  text-align: center;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats li {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  text-align: center;
+  min-height: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats li p {
+  font-weight: bold;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats li p > strong {
+  color: #2eb9d8;
+  font-size: 22px;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats li span {
+  font-size: 12px;
+}
+.mailchimp-dashlet.campaign-summary .mailchimp-campaign .summary-stats li:last-child {
+  border-bottom: none;
+}
