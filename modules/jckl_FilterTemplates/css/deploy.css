@@ -1,0 +1,184 @@
+
+/* Bring back the original Bootstrap classes...*/
+.jckl-filtertemplate-deploy .btn-large {
+    font-size: 16px;
+}
+.jckl-filtertemplate-deploy .btn-success:hover, .jckl-filtertemplate-deploy .btn-success:active, .jckl-filtertemplate-deploy .btn-success.active, .jckl-filtertemplate-deploy .btn-success.disabled, .jckl-filtertemplate-deploy .btn-success[disabled] {
+    color: #fff;
+    background-color: #35830e;
+    *background-color: #2c6c0b;
+}
+.jckl-filtertemplate-deploy .btn-success:active, .jckl-filtertemplate-deploy .btn-success.active {
+    background-color: #225509 \9 !important;
+}
+/* end Bootstrap */
+.jckl-filtertemplate-deploy {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    width: 100%;
+}
+.jckl-filtertemplate-deploy .btn-xlarge {
+    font-size: 16px;
+    padding: 24px 32px;
+}
+.jckl-filtertemplate-deploy .btn-oauth {
+    margin: 140px 0;
+}
+.jckl-filtertemplate-deploy .verticalspace {
+    margin: 80px 0;
+}
+.jckl-filtertemplate-deploy .control-group .input-append .help-block.pull-left {
+    margin-left: 6px;
+}
+.jckl-filtertemplate-deploy .link-with-button {
+    line-height: 38px;
+}
+.jckl-filtertemplate-deploy .sync-list-table th.center {
+    text-align: center !important;
+}
+.jckl-filtertemplate-deploy .sync-list-table td.center {
+    text-align: center !important;
+}
+.jckl-filtertemplate-deploy .sync-list-table select {
+    margin-bottom: 0;
+}
+.jckl-filtertemplate-deploy .button-footer {
+    margin-top: 20px;
+}
+.jckl-filtertemplate-deploy .width-inherit {
+    width: inherit !important;
+}
+.jckl-filtertemplate-deploy .howtoListToggle {
+    margin-left: 20px;
+}
+.jckl-filtertemplate-deploy option[disabled="disabled"] {
+    background-color: #eeeeee;
+}
+#content {
+    background-color: #bbbbbb;
+}
+.jckl-filtertemplate-deploy .nav-success {
+    color: #343433;
+    background-color: #efefef;
+    text-align: center;
+    padding: 8px 20px;
+}
+.jckl-filtertemplate-deploy .main-panel {
+    width: 80%;
+    max-width: 760px;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 20px auto;
+}
+.jckl-filtertemplate-deploy .content-panel {
+    margin-bottom: 10px;
+}
+.jckl-filtertemplate-deploy .deploy-steps {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+.jckl-filtertemplate-deploy .deploy-steps li {
+    display: table-cell;
+}
+.jckl-filtertemplate-deploy .deploy-steps a  {
+    padding:  12px 12px 10px 12px;
+    margin-right: 5px;
+    text-align: left;
+    background: #efefef;
+    position: relative;
+    /* display: inline-block; */
+    display: table-cell;
+}
+.jckl-filtertemplate-deploy .deploy-steps a:before  {
+    width: 0px;
+    height: 0px;
+    border-top:  20px inset transparent;
+    border-bottom:  20px inset transparent;
+    border-left:  20px solid #fff;
+    position:  absolute;
+    content:  "";
+    top:  0;
+    left:  0;
+}
+.jckl-filtertemplate-deploy .deploy-steps a:after  {
+    width: 0px;
+    height: 0px;
+    border-top:  20px inset transparent;
+    border-bottom:  20px inset transparent;
+    border-left:  20px solid #efefef;
+    position:  absolute;
+    content:  "";
+    top:  0;
+    right:  -20px;
+    z-index: 2;
+}
+.jckl-filtertemplate-deploy .deploy-steps a:first-child:before
+,.jckl-filtertemplate-deploy .deploy-steps a:last-child:after {
+    border: none;
+}
+.jckl-filtertemplate-deploy .deploy-steps a:first-child  {
+    -moz-border-radius:  4px 0 0 4px;
+    -webkit-border-radius:  4px 0 0 4px;
+    border-radius:    4px 0 0 4px;
+}
+.jckl-filtertemplate-deploy .deploy-steps a:last-child  {
+    -moz-border-radius:  0 4px 4px 0;
+    -webkit-border-radius:  0 4px 4px 0;
+    border-radius:    0 4px 4px 0;
+}
+.jckl-filtertemplate-deploy .deploy-steps .badge  {
+    margin: 0 5px 0 18px;
+    position: relative;
+    top: -1px;
+}
+
+.jckl-filtertemplate-deploy .deploy-steps a:first-child .badge  {
+    margin-left: 0;
+}
+
+.jckl-filtertemplate-deploy .deploy-steps .current  {
+    background: #007ACC;
+    color: #fff;
+}
+.jckl-filtertemplate-deploy .deploy-steps .current:after  {
+    border-left-color: #007ACC;
+}
+.jckl-filtertemplate-deploy .deploy-body {
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.jckl-filtertemplate-deploy .listViewBody .list {
+    border: 1px solid #AFAFAE !important;
+}
+.jckl-filtertemplate-deploy .listViewBody .list tr th {
+    color: #666;
+    font-size: 13px;
+    text-align: left;
+    padding: 6px 5px 6px 10px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    background: #ebebed !important;
+}
+.jckl-filtertemplate-deploy .listViewBody .list tr td {
+    color: #222;
+    font-size: 13px;
+    text-align: left;
+    padding: 6px 8px 6px 10px;
+    background-color: #f6f6f6;
+}
+.jckl-filtertemplate-deploy .subscribers {
+    margin-left: 44px;
+}
+
+.select2-container {
+    min-width: 250px !important;
+}
+
+.select2-input {
+    min-width: 220px !important;
+}

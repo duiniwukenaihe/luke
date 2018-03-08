@@ -1,0 +1,4 @@
+<?php
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_CONTACTS_LEADS_1_FROM_LEADS_TITLE'] = 'Lead Referrals';
+$mod_strings['LBL_CONTACTS_LEADS_1_FROM_CONTACTS_TITLE'] = 'Lead Referrals';

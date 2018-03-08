@@ -1,0 +1,34 @@
+# Your installation or use of this SugarCRM file is subject to the applicable
+# terms available at
+# http://support.sugarcrm.com/Resources/Master_Subscription_Agreements/.
+# If you do not agree to all of the applicable terms or do not have the
+# authority to bind the entity as an authorized representative, then do not
+# install or use this SugarCRM file.
+#
+# Copyright (C) SugarCRM Inc. All rights reserved.
+
+FROM php:5.6-apache
+
+RUN apt-get update && apt-get install -y \
+        git \
+        libmcrypt-dev \
+        libxml2-dev \
+        libssl-dev \
+        libldap2-dev \
+        libsasl2-dev \
+        unzip \
+        libaio1 \
+        --no-install-recommends \
+    && ln -fs /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/ \
+    && docker-php-ext-install mcrypt zip mysqli \
+    && docker-php-ext-configure ldap --with-ldap-sasl --with-ldap \
+    && docker-php-ext-install ldap \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o \
+    APT::AutoRemove::SuggestsImportant=false
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/www/html
+
+VOLUME /var/www/html
+

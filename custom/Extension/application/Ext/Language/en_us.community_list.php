@@ -1,0 +1,25 @@
+<?php
+
+$app_list_strings['community_list'] = [
+	''                  => '',
+	"27 Elm" => "27 Elm",
+	"Angus Acres" => "Angus Acres",
+	"Boyd Acres" => "Boyd Acres",
+	"Boyd Crossing" => "Boyd Crossing",
+	"Desert Shadows" => "Desert Shadows",
+	"Eagledale" => "Eagledale",
+	"Eagles Landing" => "Eagles Landing",
+	"Eastridge" => "Eastridge",
+	"Highland Summit" => "Highland Summit",
+	"Julina Park" => "Julina Park",
+	"Land_Lots" => "Land/Lots",
+	"Madison Park" => "Madison Park",
+	"NorthCrest_SouthCrest" => "NorthCrest / SouthCrest",
+	"NorthPointe" => "NorthPointe",
+	"One Off" => "One Off",
+	"Rooster Rock" => "Rooster Rock",
+	"Sundance Meadows" => "Sundance Meadows",
+	"The Cliffs at SouthCrest" => "The Cliffs at SouthCrest",
+	"Van Buren" => "Van Buren",
+	"Viewpoint Ridge" => "Viewpoint Ridge",
+];

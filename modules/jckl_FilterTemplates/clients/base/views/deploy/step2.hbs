@@ -1,0 +1,26 @@
+{{> deploy.header }}
+
+<div class="deploy-body tcenter">
+    <div id="category-group" class="row-fluid control-group verticalspace">
+        <label for="jckl_FilterTemplate_selections">{{str "LBL_SELECT_FROM_LIST" "jckl_FilterTemplates"}}</label>
+        <select class="select2" id="jckl_FilterTemplate_selections"
+                data-placeholder="Choose a category..." multiple="multiple">
+            <option></option>
+
+        </select>
+
+        <script>
+            var $select = $('select.select2');
+            $select.select2();
+        </script>
+    </div>
+    <br/>
+    <button class="selectRecords btn btn-primary span4 pull-right" title="Continue">{{str "LBL_SELECT_OBJECTS"  "jckl_FilterTemplates"}}</button>
+
+    <div class="tleft">
+        <h3>Information</h3>
+        <!--<p>Here is a place to offer users some <a href="http://www.example.com" target="_blank">additional help</a>.</p>-->
+    </div>
+</div>
+
+{{> deploy.footer }}

@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="custom/include/css/dashlets.css">
+<div class="track_docusign_env">
+    <div class="track_filters">
+        {{#each dashletConfig.filter_duration}}
+        <th colspan="">
+            <span class="custom-filter">
+                {{#if this.label}}
+                <div class="record-label" data-name="{{this.name}}">
+                    {{str label ../this.module}}
+                </div>
+                {{/if}}
+                {{field ../this model=../this.settings template="edit"}}
+            </span>
+        </th>
+        {{/each}}
+    </div>
+    <div id="docusign_main">
+        <table id="track_details" class="table table-striped1111 dataTable reorderable-columns"><tr><th width="5%" class="up_down"><ul class="the-icons"><li><i class="fa fa-cog fa-large"></i></li></ul></th><th width="25%" class="sort" id="name" align="none">Envelope<i class="fa hide fa-sort-down fa-large sort_dirc"></i></th><th width="5%" class="sort" id="packetstatus" align="none">Status<i class="fa hide fa-sort-down fa-large sort_dirc"></i></th><th width="10%" class="sortn" id="parent_type" align="none">Module<i class="fa hide fa-sort-down fa-large sort_dirc"></i></th><th width="10%">Parent</th><th width="10%">Sender</th><th width="5%">Signed</th><th width="10%" class="sort" id="date_entered" align="desc">Sent Date<i class="fa fa-sort-down fa-large sort_dirc"></i></th><th width="20%">Document</th></tr></table>
+    </div>
+
+    <div class="env_footer">
+        <div class="block-footers">
+            <button id="more_env" class="more-env btn btn-link btn-invisible more padded">More Envelopes...</button>
+        </div>
+    </div>
+</div>

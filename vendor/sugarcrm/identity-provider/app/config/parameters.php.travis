@@ -1,0 +1,114 @@
+<?php
+/*
+ * Your installation or use of this SugarCRM file is subject to the applicable
+ * terms available at
+ * http://support.sugarcrm.com/Resources/Master_Subscription_Agreements/.
+ * If you do not agree to all of the applicable terms or do not have the
+ * authority to bind the entity as an authorized representative, then do not
+ * install or use this SugarCRM file.
+ *
+ * Copyright (C) SugarCRM Inc. All rights reserved.
+ */
+
+$params['db_driver'] = 'pdo_mysql';
+$params['db_host'] = '127.0.0.1';
+$params['db_port'] = '';
+$params['db_name'] = '';
+$params['db_user'] = 'root';
+$params['db_password'] = '';
+$params['db_charset'] = 'utf8';
+
+$params['logdir'] = null; // null means use default log directory
+
+$params['ldap']['adapter_config'] = [
+    'host' => '127.0.0.1',
+    'port' => 389,
+];
+$params['ldap']['adapter_connection_protocol_version'] = 3;
+$params['ldap']['baseDn'] = '';
+$params['ldap']['searchDn'] = '';
+$params['ldap']['searchPassword'] = '';
+$params['ldap']['uidKey'] = 'userPrincipalName';
+$params['ldap']['filter'] = '({uid_key}={username})';
+// by default authentication provider will get DN from LDAP Entry, if it is found by filter
+// but you can specify custom dnString, ex. "{username}"
+$params['ldap']['dnString'] = null;
+// by default authentication provider replaces placeholder "{username}" in dnString with username from the token
+// you can specify a custom LDAP Entry attribute to replace the placeholder
+$params['ldap']['entryAttribute'] = null;
+// there are three ways to combine parameters above (dnString, entryAttribute)
+// 1. dnString IS empty, entryAttribute IS empty: find user by filter, get his DN, authenticate by DN
+// 2. dnString IS NOT empty, entryAttribute IS empty: find user by filter, use username from the Token to
+//    replace placeholder {username} in dnString, authenticate by dnString
+// 3. dnString IS NOT empty, entryAttribute IS NOT empty: find user by filter, use "entryAttribute" attribute
+//    from LDAP Entry to replace placeholder {username} in dnString, authenticate by dnString
+
+//It is default Okta saml parameters. Can be changed for other saml provider
+$params['saml'] = [
+    'strict' => false,
+    'debug' => true,
+    'sp' => array (
+        'entityId' => 'http://localhost:8000/saml/metadata',
+        'assertionConsumerService' => array (
+            'url' => 'http://localhost:8000/saml/acs',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ),
+        'singleLogoutService' => array (
+            'url' => 'http://localhost:8000/saml/logout',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ),
+        'NameIDFormat' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+        'x509cert' => file_get_contents(__DIR__ . '/certs/travis.crt'),
+        'privateKey' => file_get_contents(__DIR__ . '/certs/travis.key'),
+        'provisionUser' => true,
+    ),
+
+    'idp' => array (
+        'entityId' => 'http://www.okta.com/exk9f6zk3cchXSMkP0h7',
+        'singleSignOnService' => array (
+            'url' => 'https://dev-432366.oktapreview.com/app/sugarcrmdev432366_sugarcrmidmdev_1/exk9f6zk3cchXSMkP0h7/sso/saml',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ),
+        'singleLogoutService' => array (
+            'url' => 'https://dev-432366.oktapreview.com/app/sugarcrmdev432366_sugarcrmidmdev_1/exk9f6zk3cchXSMkP0h7/slo/saml',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ),
+        'x509cert' => '-----BEGIN CERTIFICATE-----
+                        MIIDpDCCAoygAwIBAgIGAVnfzGt7MA0GCSqGSIb3DQEBBQUAMIGSMQswCQYDVQQGEwJVUzETMBEG
+                        A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+                        MBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00MzIzNjYxHDAaBgkqhkiG9w0BCQEW
+                        DWluZm9Ab2t0YS5jb20wHhcNMTcwMTI3MTE1OTMzWhcNMjcwMTI3MTIwMDMzWjCBkjELMAkGA1UE
+                        BhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNV
+                        BAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDMyMzY2MRwwGgYJ
+                        KoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+                        qkK3jIpfpP3nrQPpSt5GkVl76ZsWsuwy3jlUN+220tjTdoj4cEGBx2qlbwB3/oF8mDMeNIy41nJl
+                        2Kejk+Or7PlMELbz5eYIg896/bmrepT99E6GIifO1y/dUF5YP9vuz3Wa1Zc6SdMZsA5h3saoat5R
+                        r6Qe/hrCsg1o7YetADwFpqfVg+i7dVqNcCNDoJCQS4yVRNRsrc/p+6n/EN3XJowuYsx46kcF+BpF
+                        P5vBP35WP0gDWA9T7PCppE1mpcpY4uCwsbMCr27uazt7uYaN5/Z3EWk1wXsJpYZK9rpIk2HFYH+R
+                        HG7aFGKlrb8veY9ylI9IVgTY9+LZlPOsUya0qwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQACup4i
+                        RE4cKB4bbMfe6eGzTYSziDSk6aWkkILwcSa5JZno30Nku0yAGhBmFdIw2sgrIyoHZntiHMJsznbu
+                        3PjCtXc439t5wVd4un8JBXLIwv3qlk26omzMmLbBet+QXzetqil1UG8+eXVFghe0tXCKiYfJy/K6
+                        jx7m5RNId7i2MYADIxP+JnGEHquvVbiULAQHYN/oGkk/p11TRnJAiFllsyYyelGSRom3GxBP3cbP
+                        VJeif493yLklwr/mLWryKqLiz3InaukUyK9ooQFFEt/4zccbZH6k4rMRNmJpX9/oMOoHo6U7bqFo
+                        3o3K3Yf1YgzwDOdMX9f7tcVxK05wwCZB
+                        -----END CERTIFICATE-----',
+    ),
+    'security' => [
+            'logoutRequestSigned' => true,
+            'wantMessagesSigned' => true,
+            'signatureAlgorithm' => 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
+            'validateRequestId' => true,
+        ],
+
+    // User attributes at third-party IdP and their mappings to User fields within the App;
+    // 'name_id' is a main required attribute - User login credential at IdP;
+    // other attributes (e.g. 'test_attr' => 'first_name', ...) are optional.
+    'user_mapping' => [
+        'name_id' => 'email',
+    ],
+];
+
+$params['monolog'] = [
+    'monolog.name' => 'IdentityProvider',
+    'monolog.level' => \Monolog\Logger::NOTICE,
+];

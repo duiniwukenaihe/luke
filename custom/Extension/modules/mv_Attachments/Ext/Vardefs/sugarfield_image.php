@@ -1,0 +1,29 @@
+<?php
+ // created: 2017-12-12 21:08:10
+$dictionary['mv_Attachments']['fields']['image']['dependency']='contains($file_mime_type,"image")';
+$dictionary['mv_Attachments']['fields']['image']['required']=false;
+$dictionary['mv_Attachments']['fields']['image']['name']='image';
+$dictionary['mv_Attachments']['fields']['image']['vname']='LBL_IMAGE';
+$dictionary['mv_Attachments']['fields']['image']['type']='image';
+$dictionary['mv_Attachments']['fields']['image']['massupdate']=false;
+$dictionary['mv_Attachments']['fields']['image']['no_default']=false;
+$dictionary['mv_Attachments']['fields']['image']['comments']='';
+$dictionary['mv_Attachments']['fields']['image']['help']='';
+$dictionary['mv_Attachments']['fields']['image']['importable']='true';
+$dictionary['mv_Attachments']['fields']['image']['duplicate_merge']='enabled';
+$dictionary['mv_Attachments']['fields']['image']['duplicate_merge_dom_value']=1;
+$dictionary['mv_Attachments']['fields']['image']['audited']=false;
+$dictionary['mv_Attachments']['fields']['image']['reportable']=true;
+$dictionary['mv_Attachments']['fields']['image']['unified_search']=false;
+$dictionary['mv_Attachments']['fields']['image']['merge_filter']='disabled';
+$dictionary['mv_Attachments']['fields']['image']['calculated']=false;
+$dictionary['mv_Attachments']['fields']['image']['len']=255;
+$dictionary['mv_Attachments']['fields']['image']['size']='20';
+$dictionary['mv_Attachments']['fields']['image']['studio']='visible';
+$dictionary['mv_Attachments']['fields']['image']['dbType']='varchar';
+$dictionary['mv_Attachments']['fields']['image']['width']='425';
+$dictionary['mv_Attachments']['fields']['image']['readonly']=true;
+$dictionary['mv_Attachments']['fields']['image']['border']='';
+$dictionary['mv_Attachments']['fields']['image']['height']='';
+
+ ?>

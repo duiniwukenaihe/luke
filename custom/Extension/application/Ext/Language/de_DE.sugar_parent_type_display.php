@@ -1,0 +1,21 @@
+<?php
+ // created: 2017-12-29 21:42:53
+
+$app_list_strings['parent_type_display']=array (
+  'Accounts' => 'Firma',
+  'Contacts' => 'Kontakt',
+  'Tasks' => 'Aufgabe',
+  'Opportunities' => 'Verkaufschance',
+  'Products' => 'Produkt',
+  'Quotes' => 'Angebot',
+  'Bugs' => 'Fehler',
+  'Cases' => 'Ticket',
+  'Leads' => 'Interessent',
+  'Project' => 'Projekt',
+  'ProjectTask' => 'Projektaufgabe',
+  'Prospects' => 'Zielkontakt',
+  'KBContents' => 'Wissensdatenbank',
+  'm_CAMS' => 'CAMS',
+  'mv_SrvReq' => 'Service Request Items',
+  'Service Request Items' => NULL,
+);

@@ -1,0 +1,26 @@
+
+<style>
+    .choice-filter-share {
+        font-size: 14px;
+        height: 12px;
+        width: 16px;
+        display: inline-block;
+        margin: -2px -2px 0 0;
+    }
+
+    .choice-filter-share>.fa-plus-circle {
+        color: rgba(255,255,255,0.7);
+    }
+    .choice-filter-share>.fa-plus-circle:hover {
+        color: #ffffff;
+    }
+
+</style>
+<input type="hidden" class="select2 search-filter" data-placeholder='{{str labelDropdownTitle}}'>
+<div class="choice-filter">
+    <span class="choice-filter-label"></span>
+    <span class="choice-filter-close"><i class="fa fa-times-circle"></i></span>
+    &nbsp;
+    <span class="choice-filter-share" title='{{str labelShareFilter}}'>
+    <i class="fa fa-plus-circle" ></i></span>
+</div>

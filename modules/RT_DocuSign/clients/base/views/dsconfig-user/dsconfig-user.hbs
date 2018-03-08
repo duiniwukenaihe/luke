@@ -1,0 +1,49 @@
+<div id="content">
+	<div class="row-fluid">
+		<div class="main-pane span8">
+			<div class="headerpane">
+				<h1>					
+					<span class="record-cell">
+					<span sfuuid="184" class="edit">
+					<span sfuuid="141" class="list-headerpane">Configure RT DocuSign</span>
+					</span>
+					</span>
+					<div class="btn-toolbar pull-right dropdown">
+					<span sfuuid="185" class="detail">
+					<a class="btn btn-invisible btn-link" href="javascript:void(0);" track="click:cancel_button" name="cancel_button">
+					Cancel</a>
+					</span>
+					<span sfuuid="186" class="detail">
+					<a class="btn btn-primary" href="javascript:void(0);" id="test_button" track="click:test_button" name="test_button">
+					Test Credentials</a>
+					</span>
+					<span sfuuid="186" class="detail">
+					<a class="btn btn-primary" href="javascript:void(0);" id="save_button" track="click:save_button" name="save_button">
+					Save</a>
+					</span>
+					</div>
+				</h1>
+			</div>
+			<div class="record">				
+				{{#each meta.panels}}
+						{{#each fields}}
+							<div class="row-fluid panel_body">					
+								<div class="span5 record-cell">
+								<p><div id="{{this.name}}" class="record-label">{{{str label "RT_DocuSign"}}}</div></p>
+								{{field ../../this model=../../model}}
+								</div>
+							</div>	
+						{{/each}}
+				{{/each}}
+				<br/><br/><div class="row-fluid panel_body">					
+					<div class="span5 record-cell">
+						<p><b>Note :</b> If you do not have DocuSign account. First create DocuSign Account here.  <a  href="https://secure.docusign.com/signup/developer" target="blank" data-original-title="" title="">Sign Up DocuSign</a></p>
+					</div>
+				</div><br/>
+				<!--<div id="schedularError"></div>-->
+			</div>
+			
+		</div>
+		<div class="side sidebar-content span4"></div>
+	</div>
+</div>

@@ -1,0 +1,251 @@
+<style>
+.send_docs_main{
+    padding-left: 10px;
+}
+.send_docs_main .signed_attachment_type,
+.send_docs_main .documents_type,
+.send_docs_main .signed_attachment_name{
+    margin-top: 17px;
+    margin-left: 0px;
+}
+.send_docs_main .select_initial{
+    width: 31%;
+    margin-bottom: 0px;
+}
+.send_docs_main .attached_contacts .select2-container,
+.send_docs_main #contacts_grid input{
+    width: 68% !important;
+}
+.send_docs_main .docusign_templates{
+    width: 100% !important;
+    margin-top: 17px;
+    margin-bottom: 10px;
+}
+.send_docs_main .template_roles{
+    margin-left: 98px;
+}
+.send_docs_main .template_msg{
+    margin-left: 6px;
+}
+</style>
+<i id="spinner" style="margin-left:48.5%; margin-right:51.5%; margin-top :309px; " class="icon-spinner icon-spin icon-5x  fa fa-spinner fa-spin fa-5x"></i>
+<iframe id="myIframe" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"  src="" style="position: relative;  width: 100%; height : 566px; overflow-x: scroll; overflow-y: scroll;" ></iframe>
+<div class="row-fluid" id="maindiv">
+    <div  class="send_docs_main main-pane span8">
+        <div class="headerpane">
+            <h1>
+                <span class="record-cell" data-type="avatar" data-name="picture">
+                    <span class="index" data-fieldname="picture" data-index="">
+                        <span sfuuid="830" class="detail">
+                            <span class="label label-module label-module-lg label-Notes" rel="tooltip" title="" data-placement="right" data-original-title="Note" tabindex="-1">DS
+                            </span>
+                        </span>
+                    </span>
+                </span>
+                </span>
+                <span class="record-cell edit" data-type="name" data-name="name" style="width: 100%;">
+                    <span class="table-cell-wrapper">
+                        <span class="index" data-fieldname="name" data-index="">
+                            <span sfuuid="831" class="edit">
+                                <h3 align="left"> Send To DocuSign For Signature </h3>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+                <span class="record-cell hide" data-type="favorite" data-name="favorite">
+                    <span class="table-cell-wrapper">
+                        <span class="index" data-fieldname="favorite" data-index="">
+                            <span sfuuid="832"></span>
+                        </span>
+                    </span>
+                </span>
+                <span class="record-cell hide" data-type="follow" data-name="follow">
+                    <span class="table-cell-wrapper">
+                        <span class="index" data-fieldname="follow" data-index="">
+                            <span sfuuid="833" class="detail">
+                            </span>
+                        </span>
+                    </span>
+                </span>
+                <div class="btn-toolbar pull-right">
+                    <span sfuuid="834" class="detail">
+                        <a class="btn btn-invisible btn-link" href="javascript:void(0);" track="click:cancel_button" name="cancel_button">
+                            Cancel</a>
+                    </span><span sfuuid="835" class="detail">
+                        <a class="btn btn-invisible btn-link hide" href="javascript:void(0);" track="click:restore_button" name="restore_button" style="display: none;">
+                            Reset to Original</a>
+                    </span>
+                    <span sfuuid="836" class="actions btn-group detail">
+                        <span sfuuid="837" class="detail">
+                            <a class="rowaction btn btn-primary" href="javascript:void(0);" name="send_to_ds" track="click:send_to_ds">Send To DocuSign</a>
+                        </span>
+                        <ul data-menu="dropdown" class="dropdown-menu" role="menu">
+                            <li><span sfuuid="838"></span></li>
+                            <li><span sfuuid="839"></span></li>
+                        </ul>
+                    </span>
+                    <span sfuuid="840" class="detail" tabindex="-1">
+                        <button class="btn btn-invisible sidebar-toggle" rel="tooltip" title="" data-placement="left" track="click:togglesidebar" data-original-title="Open/Close Dashboard">
+                        </button>
+                    </span>
+                </div>
+            </h1>
+        </div>
+        <div id="record" class="record" style="padding-left: 15px;">
+            <div class="row-fluid panel_body" style="margin-left : 0px;">
+                <div class="span6" data-type="text" data-name="title">
+                    <div class="record-label" data-name="title">
+                        <b>Parent Module</b>
+                    </div>
+                    <span class="normal index" data-fieldname="title" data-index="">
+                        <span sfuuid="175" class="edit">
+                            <input type="text" value="{{parent_module}}" id="parent" maxlength="100" class="span12" aria-label="Title" readonly></input>		
+                        </span>
+                    </span>
+                    <span class="record-edit-link-wrapper" data-name="title" tabindex="-1" style="display: none;">
+                        <a class="record-edit-link btn btn-invisible" data-type="text" data-name="title"><i class="icon-pencil fa fa-pencil"></i></a>
+                    </span>
+                </div>
+                <div class="span6" style="margin-left : 10px">
+                    <div class="record-label" data-name="phone_mobile">
+                        <b>Parent Record</b>
+                    </div>
+                    <span class="normal index" data-fieldname="phone_mobile" data-index="">
+                        <span sfuuid="176" class="edit">
+                            <input type="text" value="{{name}}" id="parent_name" maxlength="100" class="span12" readonly></input>
+                        </span>
+                    </span>
+                    <span class="record-edit-link-wrapper" data-name="phone_mobile" tabindex="-1" style="display: none;">
+                        <a class="record-edit-link btn btn-invisible" data-type="phone" data-name="phone_mobile"><i class="icon-pencil fa fa-pencil"></i></a>
+                    </span>
+                </div>
+                {{#each meta.panels}}
+                {{#each fields}}
+                {{#eq this.name 'signed_attachment_type'}}
+                <div class="span6 signed_attachment_type">
+                    <div class="record-label" data-name="signed_attachment_type">
+                        <b>{{../this.label}}</b>
+                    </div>
+                    <div class="controls inherit-width btn-fit" id="doc_{{../this.name}}">
+                        {{field ../../../this model=../../../model}}				 
+                    </div>
+                </div>
+                {{/eq}}
+                {{/each}}				
+                {{/each}}
+                <div class="span6 signed_attachment_name" style="margin-left : 10px">
+                    <div class="record-label" data-name="signed_attachment_name">
+                        <b>Signed Attachment Name</b>
+                    </div>
+                    <span class="normal index" data-fieldname="signed_attachment_name" data-index="">
+                        <span sfuuid="176" class="edit">
+                            <input type="text" value="" id="signed_attachment_name" class="span12"></input>
+                        </span>
+                    </span>
+                </div>
+                {{#each meta.panels}}
+                {{#each fields}}
+                {{#eq this.name 'documents_type'}}
+                <div class="span6 documents_type">
+                    <div class="record-label" data-name="documents_type">
+                        <b>{{../this.label}}</b>
+                    </div>
+                    <div class="controls inherit-width btn-fit" id="doc_{{../this.name}}">
+                        {{field ../../../this model=../../../model}}				 
+                    </div>
+                </div>
+                {{/eq}}
+                {{/each}}				
+                {{/each}}
+            </div>
+
+            <div class="row-fluid panel_body" style="margin-left : 0px;">
+                <div id="sugar_attachments" class="span6" style="margin-left : 0px;">               
+                    {{#if documents}}
+                    <br/>
+                    <div class="record-label" >            
+                        <b>Attachments</b>
+                    </div>
+                    {{/if}}
+                    <div id="documents_grid">
+                        {{#each documents}}
+                        <div id="row_{{revisionId}}" class="controls span12 controls-one btn-fit"  style="margin-left : 0px;">
+                            <input type="text" value="{{name}}" class="span12" >
+                            <a href="javascript:void(0)" class="btn first" rel="tooltip" title="Primary" track="click:remove_document" name="remove_document"><i class="icon-minus fa fa-minus" id="{{revisionId}}"></i></a>
+                            <br/>
+                        </div>
+                        {{/each}}				  
+                        <br/>
+                        <div class="record-label" >            
+                            <b>Attachments From SugarCRM</b>
+                        </div>				  
+                        {{#each meta.panels}}
+                        {{#each fields}}
+                        {{#eq this.name 'attacheddocuments_c'}}
+                        <div class="controls inherit-width controls-one btn-fit" id="doc_{{../this.name}}-0">
+                            {{field ../../../this model=../../../model}}
+                            <a href="javascript:void(0)" class="btn first" rel="tooltip" title="Primary" track="click:add_document" name="add_document"><i class="icon-plus fa fa-plus" id="doc_0"></i></a>
+                        </div>
+                        {{/eq}}
+                        {{/each}}				
+                        {{/each}}
+                    </div>
+                </div>
+                <div id="docusign_templates" class="span6" style="margin-left : 0px; display: none;">               
+                    {{#each meta.panels}}
+                    {{#each fields}}
+                    {{#eq this.name 'docusign_templates'}}
+                    <div class="span6 docusign_templates">
+                        <div class="record-label" data-name="docusign_templates">
+                            <b>{{../this.label}}</b>  
+                        </div>
+                        <div class="controls inherit-width btn-fit" id="doc_{{../this.name}}">
+                            {{field ../../../this model=../../../model}}				 
+                        </div>
+                    </div>
+                    {{/eq}}
+                    {{/each}}				
+                    {{/each}}
+                    <div class="template_details"  style="margin-left : 0px; display: none;">
+                        <b>Template Roles:</b><span class="template_msg"></span>
+                         <div class="template_roles"></div>
+                    </div>
+
+                </div>
+                <div class="span6" style="margin-left : 10px" >
+                    {{#if contacts}}
+                    <br/>
+                    <div class="record-label" >            				
+                        <b>Contacts</b>
+                    </div>
+                    {{/if}}			   
+                    <div id="contacts_grid">
+                        {{#each contacts}}
+                        <div id="row_{{id}}" class="controls span12 controls-one btn-fit"  style="margin-left : 0px;">                     
+                            <input type="text" value="{{name}}({{email}})" class="inherit-width" name="{{name}}"></input>
+                            <select class="element select2 select_initial" id="select_initial_{{id}}" data-placeholder="Initials"></select>				 
+                            <a href="javascript:void(0)" class="btn first" rel="tooltip" title="Primary" track="click:remove_contact" name="remove_contact"><i class="icon-minus fa fa-minus" id="{{id}}"></i></a>
+                            <br/></div>
+                        {{/each}}
+                        <br/>
+                        <div class="record-label" >            
+                            <b>Attach Contacts From SugarCRM</b>
+                        </div>				  
+                        {{#each meta.panels}}
+                        {{#each fields}}
+                        {{#eq this.name 'attachedcontacts_c'}}
+                        <div class="controls inherit-width controls-one btn-fit" id="cntct_{{../this.name}}-0">
+                            {{field ../../../this model=../../../model}}
+                            <select class="element select2 select_initial" id="select_initial_0" data-placeholder="Initials"></select>				 
+                            <a href="javascript:void(0)" class="btn first" rel="tooltip" title="Primary" track="click:add_contact" name="add_contact"><i class="icon-plus fa fa-plus"  id="cntct_0"></i></a>
+                        </div>
+                        {{/eq}}
+                        {{/each}}				
+                        {{/each}}           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div id="sidebar" class="side sidebar-content span4"></div>
+</div>

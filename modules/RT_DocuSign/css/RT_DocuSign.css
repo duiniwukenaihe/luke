@@ -1,0 +1,33 @@
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #282828;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #282828;
+	box-shadow:inset 0px 1px 0px 0px #282828;
+	background-color:#282828;
+	border:1px solid #282828;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:8px 23px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background-color:#0f0f0f;	
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.navbardiv{
+	background-color:#282828;	
+    border-bottom:  4px solid #E61718;
+}
+.mybackground{
+	background-color: #E4E4E4;	
+}
+.savebutton{
+	background-color: #176DE5;
+	color: #F5EEEE;
+}

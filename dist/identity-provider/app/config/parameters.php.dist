@@ -1,0 +1,112 @@
+<?php
+/*
+ * Your installation or use of this SugarCRM file is subject to the applicable
+ * terms available at
+ * http://support.sugarcrm.com/Resources/Master_Subscription_Agreements/.
+ * If you do not agree to all of the applicable terms or do not have the
+ * authority to bind the entity as an authorized representative, then do not
+ * install or use this SugarCRM file.
+ *
+ * Copyright (C) SugarCRM Inc. All rights reserved.
+ */
+
+$params['db_driver'] = 'pdo_mysql';
+$params['db_host'] = '127.0.0.1';
+$params['db_port'] = '';
+$params['db_name'] = '';
+$params['db_user'] = 'root';
+$params['db_password'] = '';
+$params['db_charset'] = 'utf8';
+
+$params['logdir'] = null; // null means use default log directory (<app_dir>/var/logs)
+
+$params['ldap']['adapter_config'] = [
+    'host' => '127.0.0.1',
+    'port' => 389,
+];
+$params['ldap']['adapter_connection_protocol_version'] = 3;
+$params['ldap']['baseDn'] = '';
+$params['ldap']['searchDn'] = '';
+$params['ldap']['searchPassword'] = '';
+$params['ldap']['uidKey'] = 'userPrincipalName';
+$params['ldap']['filter'] = '({uid_key}={username})';
+// by default authentication provider will get DN from LDAP Entry, if it is found by filter
+// but you can specify custom dnString, ex. "{username}"
+$params['ldap']['dnString'] = null;
+// by default authentication provider replaces placeholder "{username}" in dnString with username from the token
+// you can specify a custom LDAP Entry attribute to replace the placeholder
+$params['ldap']['entryAttribute'] = null;
+// there are three ways to combine parameters above (dnString, entryAttribute)
+// 1. dnString IS empty, entryAttribute IS empty: find user by filter, get his DN, authenticate by DN
+// 2. dnString IS NOT empty, entryAttribute IS empty: find user by filter, use username from the Token to
+//    replace placeholder {username} in dnString, authenticate by dnString
+// 3. dnString IS NOT empty, entryAttribute IS NOT empty: find user by filter, use "entryAttribute" attribute
+//    from LDAP Entry to replace placeholder {username} in dnString, authenticate by dnString
+
+// Configuration parameters to enable group membership checking.
+// Enable/disable checking if user is member of some group. Maybe true or false.
+$params['ldap']['groupMembership'] = false;
+// Group DN string, example: CN=engineering,OU=Distribution Groups,OU=Groups,OU=Accounts,DC=sugarcrm,DC=net
+// CN=engineering (qa and developers are supposed to be member of it) or CN=architects
+$params['ldap']['groupDn'] = '';
+// The unique identifier of the person that will be used to check if they are a member of the group. Example: dn
+$params['ldap']['userUniqueAttribute'] = null;
+// The attribute of the Group that will be used to filter against the User Attribute. Example: member
+$params['ldap']['groupAttribute'] = '';
+// Include the User DN with the User Attribute when checking group membership.
+$params['ldap']['includeUserDN'] = false;
+//$params['ldap'] = null; // null = disabled
+
+
+//For explanation see https://github.com/onelogin/php-saml/blob/master/README.md
+$params['saml'] = [
+    'strict' => false,
+    'debug' => true,
+    'sp' => array (
+        'entityId' => '',
+        'assertionConsumerService' => array (
+            'url' => '',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ),
+        'singleLogoutService' => array (
+            'url' => '',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ),
+        'NameIDFormat' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+        'x509cert' => file_get_contents(__DIR__ . '/certs/travis.crt'),
+        'privateKey' => file_get_contents(__DIR__ . '/certs/travis.key'),
+        'provisionUser' => true,
+    ),
+
+    'idp' => array (
+        'entityId' => '',
+        'singleSignOnService' => array (
+            'url' => '',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ),
+        'singleLogoutService' => array (
+            'url' => '',
+            'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ),
+        'x509cert' => '',
+    ),
+
+    'security' => [
+        'authnRequestsSigned' => true,
+        'signatureAlgorithm' => 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
+        'validateRequestId' => false,
+    ],
+
+    // User attributes at third-party IdP and their mappings to User fields within the App;
+    // 'name_id' is a main required attribute - User login credential at IdP;
+    // other attributes (e.g. 'test_attr' => 'first_name', ...) are optional.
+    'user_mapping' => [
+        'name_id' => 'email',
+    ],
+];
+
+//Setup a default logging mechanism. For more options see http://silex.sensiolabs.org/doc/2.0/providers/monolog.html 
+$params['monolog'] = [
+    'monolog.name' => 'IdentityProvider',
+    'monolog.level' => \Monolog\Logger::NOTICE,
+];

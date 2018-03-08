@@ -1,0 +1,62 @@
+    .track_docusign_env {
+        padding: 10px 0px;
+    } 
+    .track_docusign_env .track_filters{
+        padding: 8px;
+        padding-top: 0px;
+    }
+    .track_docusign_env .docusign_main{
+        overflow-x: auto;
+    } 
+
+    .track_docusign_env .element{
+        margin-right: 10px;
+    }
+    .track_docusign_env #docusign_main{
+        height: 410px !important;
+        overflow: auto !important;
+        clear: both;
+    }
+    .track_docusign_env .env{
+        background: #f6f6f6;
+    } 
+    .track_docusign_env #docusign_main table tr .up_down{
+        min-width: 28px !important;
+    }
+    .track_docusign_env #docusign_main table tr th{
+        font-weight: bold;
+    }
+    .track_docusign_env .show_contacts{
+        cursor: pointer;
+    } 
+    .track_docusign_env .no_contact{
+        text-align: center;
+    }
+    .track_docusign_env .more_env{
+        text-decoration: none !important;
+    } 
+    .track_docusign_env table .fa-cog{
+        text-align: center;
+    } 
+    .track_docusign_env .fa-times{
+        cursor: pointer;
+    }
+    .track_docusign_env .sort{
+        cursor: pointer;
+    }
+    .track_docusign_env .sort_dirc{
+        float: right;
+        margin-top: 6px;
+    } 
+    .track_docusign_env #track_details .the-icons{
+        text-align: center;
+    } 
+
+    .track_docusign_env .track_filters .record-label{
+        width: 5% !important;
+    } 
+    .track_docusign_env .track_filters .custom-filter{
+        float: left;
+        width: 20% !important;
+        margin-bottom: 10px;
+    }

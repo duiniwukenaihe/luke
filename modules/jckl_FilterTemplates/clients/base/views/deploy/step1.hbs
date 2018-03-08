@@ -1,0 +1,28 @@
+{{> deploy.header }}
+
+
+<div class="deploy-body tcenter">
+    <div id="category-group" class="row-fluid control-group verticalspace">
+        <label for="category">{{str "LBL_SELECT_CATEGORY" "jckl_FilterTemplates"}}</label>
+        <select class="select2" id="jckl_FilterTemplate_category"
+                data-placeholder="Choose a category...">
+            <option></option>
+            <option value="users">{{str "LBL_USERS_OPTION" "jckl_FilterTemplates"}} </option>
+            <option value="roles">{{str "LBL_ROLES_OPTION" "jckl_FilterTemplates"}} </option>
+            <option value="teams">{{str "LBL_TEAMS_OPTION" "jckl_FilterTemplates"}} </option>
+
+        </select>
+        <button class="selectCategory btn btn-primary span4 pull-right" title="Continue">{{str "LBL_CONTINUE"  "jckl_FilterTemplates"}}</button>
+        <script>
+            var $select = $('select.select2');
+            $select.select2();
+        </script>
+    </div>
+
+    <div class="tleft">
+        <h3>Information</h3>
+        <p>Select to deploy to a list of Users, Roles, or Teams</p>
+    </div>
+</div>
+
+{{> deploy.footer }}

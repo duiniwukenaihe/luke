@@ -1,0 +1,18 @@
+{{> deploy.header }}
+
+<div class="deploy-body tcenter">
+    <div id="category-group" class="row-fluid control-group verticalspace">
+
+        <button class="deployFilter btn btn-primary btn-large span6 offset3" title="Continue">{{str "LBL_DEPLOY"  "jckl_FilterTemplates"}}</button>
+        <script>
+            var $select = $('select.select2');
+            $select.select2();
+        </script>
+    </div>
+    <br/>
+    <!--<button class="deployFilter btn btn-primary span4 pull-right" title="Continue">{{str "LBL_DEPLOY_DASHBOARD"  "jckl_FilterTemplates"}}</button>-->
+
+
+</div>
+
+{{> deploy.footer }}
