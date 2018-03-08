@@ -1,0 +1,155 @@
+<style>
+	div.customMainPane
+	{
+		padding-top: 5%;
+	}
+	.bold_users {
+		font-weight: bold;
+	}
+	.boost{
+		width: 135px !important;
+		height: inherit !important;
+	}
+	.custom_width{
+		width: 95% !important;
+	}
+	.configureUsers{
+		height: 300px;
+	}
+	.configureUsers th{
+		border: 1px solid;
+	}
+	.configureUsers td{
+		vertical-align: top;
+		border: 1px solid;
+	}
+	#disabled, #enabled {
+		float: left;
+		list-style-type: none;
+		margin: 0 10px 0 0;
+		padding: 0 0 2.5em;
+		height: 300px;
+		width: 100%;
+		min-width: 160px !important;
+		overflow: scroll;
+	}
+	.connectedSortable {
+		min-height: 50px;
+		min-width: 50px;
+		font-weight: normal !important;
+	}
+	#disabled li, #enabled li {
+		
+		margin: 5px 0px -4px 5px;
+		padding: 5px;
+		width: 86%;
+	}
+	.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+		border: 1px solid #D3D3D3;
+		color: #555555;
+		font-weight: normal;
+	}
+	.do-not-drag-drop{
+		background: repeat-x scroll 50% 50% #E6E6E6;
+		border: 1px solid #D3D3D3;
+		color: #555555;
+		font-weight: bold;
+	}
+	
+</style>
+{{#if isLoaded}}
+	{{#if isRepaired}}
+			<div>
+				<div class="headerpane">
+					<h1>
+					<div class="record-cell">
+						<span class="module-title">{{title}}</span>
+					</div>
+					<div class="btn-toolbar pull-right">
+						<span sfuuid="900" class="edit">
+						<a class="btn btn-primary" href="javascript:void(0);" name="cancel_button" id="cancel_button">
+							{{LBL_CANCEL_BUTTON_LABEL}}
+						</a>
+						<a class="btn btn-primary" href="javascript:void(0);" name="save_button" id="save_button">
+							{{LBL_SAVE_BUTTON_LABEL}}
+						</a>
+						</span>
+					</div>
+					</h1>
+				</div>
+				<div class="record">
+				{{#if isAdmin}}
+				<div class="row-fluid panel_body">
+					<div class="span4 record-cell" data-type="" data-name="">
+						<span class="normal index" data-fieldname="" data-index="">
+							<span sfuuid="901" class="edit">
+								<span class="btn" id="enable_all_users"> Enable All</span>
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="row-fluid panel_body">
+				<div class="span4 record-cell" data-type="text" data-name="configureUsers">
+				<table class="configureUsers"> 
+				
+				<tr>
+				<th class="do-not-drag-drop">Disabled</th>
+				<th class="do-not-drag-drop">Enabled</th>
+				</tr>
+				<tr>
+				<td>
+				<ul id="disabled" class="connectedSortable">
+					
+					{{#each usersObject.disabled}}
+					<li id="{{id}}" class="ui-state-default">{{text}}</li>
+
+					{{/each}}
+				</ul>
+				</td>
+				<td>
+				<ul id="enabled" class="connectedSortable">
+					
+					{{#each usersObject.enabled}}
+					<li id="{{id}}" class="ui-state-default">{{text}}</li>
+					{{/each}}
+				</ul>
+				</td>
+				</tr>
+				</table> 
+				</div>
+				<div class="span4 record-cell" data-type="text" data-name="users_info">
+						<span class="normal index" data-fieldname="users_info" data-index="">
+							<span sfuuid="903" class="detail custom_width">
+								<span sfuuid="904" class="detail" >
+								{{LBL_ALL_USERS}}
+								</span>
+								<span sfuuid="905" class="pull-right detail bold_users" id='active_users'>
+								{{active_users}}
+								</span>
+							</span>
+							
+							<span sfuuid="906" class="detail custom_width">
+								<span sfuuid="907" class="detail" >
+								{{LBL_GSYNC_ENABLED_USERS}}
+								</span>
+								<span sfuuid="908" class="pull-right detail bold_users" id='enabled_active_users'>
+								{{enabled_active_users}}
+								</span>
+							</span>
+						</span>
+						
+				</div>	
+				</div>
+				{{/if}}
+				</div>
+			</div>
+		{{else}}
+		<div class='headerpane'>
+		<h1>
+		<p class="record-cell">
+		Do <a href='#bwc/index.php?module=Administration&action=Upgrade' target='_blank'><span class='alert-danger' >Quick Repair and Rebuild </span></a>first and then refresh this page manually
+		</p>
+		</h1>
+		</div>
+	{{/if}}
+{{/if}}

@@ -1,0 +1,290 @@
+<style>
+	div.customMainPane
+	{
+		padding-top: 5%;
+	}
+	[data-name="fieldset_calendar"] {
+		font-weight: bold;
+	}
+	[data-name="fieldset_contacts"] {
+		font-weight: bold;
+	}
+	[data-name="fieldset_documents"] {
+		font-weight: bold;
+	}
+	[data-name="fieldset_archive_emails"] {
+		font-weight: bold;
+	}
+</style>
+{{#if loaded}}
+<div>
+	<div class="headerpane">
+		<h1>
+		<div class="record-cell">
+			<span class="module-title">{{title}}</span>
+		</div>
+		<div class="btn-toolbar pull-right">
+			<span sfuuid="123" class="edit">
+			<a class="btn btn-primary" href="javascript:void(0);" name="save_button" id="save_button">
+				{{LBL_SAVE_BUTTON_LABEL}}
+			</a>
+			</span>
+		</div>
+		</h1>
+	</div>
+	
+	<div class="record">
+		<div class="panel_body">
+			<div class="row-fluid">
+			<div style="border-bottom: 2px solid #000;float: left; width: 100%;height: 20px;">
+			<div class="span10 h2" data-type="fieldset-with-labels" data-name="fieldset_calendar">
+				{{LBL_CALENDAR_FIELDSET}}
+			</div>
+			{{#if isAdmin}}
+			<span class="span2" data-name="activate_calendar" data-type="bool">
+			{{#if activate_calendar_created}}
+				<label class="record-label span10 tright" data-name="activate_calendar">
+					{{LBL_ACTIVATE_JOB}}
+				</label>
+				<span data-fieldname="activate_calendar" class="span2">
+				
+				{{#if activate_calendar}}
+					<input type="checkbox" class="checkbox" checked="true">
+					{{else}}
+					<input type="checkbox" class="checkbox" >
+				{{/if}}
+				</span>
+				
+			{{else}}
+				<label class="record-label span10 tright" data-name="activate_calendar">
+					{{LBL_JOB_NOT_AVAILABLE}}
+				</label>
+			{{/if}}	
+			</span>
+			{{/if}}
+			</div>
+			</div>		
+			<span class="calendar normal index" data-fieldname="fieldset_calendar">
+				<form class="form-horizontal" role="form">
+					<div class="form-group row-fluid " data-name="calendar_google" data-type="bool">
+						<label class="span2 control-label" data-name="calendar_google">
+							{{LBL_CALENDAR_GOOGLE}}
+						</label>
+						<span class="span10" data-fieldname="calendar_google">
+							<input type="checkbox" class="checkbox" checked="true" disabled="disabled">
+						</span>
+					</div>
+					
+					<div class="form-group row-fluid " data-name="calendar_sugar" data-type="bool">
+						<label class="span2 control-label" data-name="calendar_sugar">
+							{{LBL_CALENDAR_SUGAR}}
+						</label>
+						<span class="span10" data-fieldname="calendar_sugar">
+							<input type="checkbox" class="checkbox" checked="true" disabled="disabled">
+						</span>
+					</div>
+					<span class="h2" data-name="activities">
+						Activities
+					</span>
+					<div class="form-group row-fluid " data-name="calendar_meetings" data-type="bool">
+						<label class="span2 control-label" data-name="calendar_meetings">
+							{{LBL_CALENDAR_MEETINGS}}
+						</label>
+						<span class="span10" data-fieldname="calendar_meetings">
+							<input type="checkbox" class="checkbox" checked="true" disabled="disabled">
+						</span>
+					</div>
+					
+					<div class="form-group row-fluid " data-name="calendar_calls" data-type="bool">
+						<label class="span2 control-label" data-name="calendar_calls">
+							{{LBL_CALENDAR_CALLS}}
+						</label>
+						<span class="span10" data-fieldname="calendar_calls">
+							{{#if calendar_calls}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+					
+					<div class="form-group row-fluid " data-name="calendar_tasks" data-type="bool">
+						<label class="span2 control-label" data-name="calendar_tasks">
+							{{LBL_CALENDAR_TASKS}}
+						</label>
+						<span class="span10" data-fieldname="calendar_tasks">
+							{{#if calendar_tasks}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+				</form>
+			</span>
+		</div>
+	
+		
+		<div class="panel_body">
+			<div class="row-fluid">
+		<div style="border-bottom: 2px solid #000;float: left; width: 100%;height: 20px;">
+			<div class="span10 h2" data-type="fieldset-with-labels" data-name="fieldset_calendar">
+				{{LBL_CONTACTS_FIELDSET}}
+			</div>
+			{{#if isAdmin}}
+			<span class="span2" data-name="activate_contacts" data-type="bool">
+			{{#if activate_contacts_created}}
+				<label class="record-label span10 tright" data-name="activate_contacts">
+					{{LBL_ACTIVATE_JOB}}
+				</label>
+				<span data-fieldname="activate_contacts" class="span2">
+				
+				{{#if activate_contacts}}
+					<input type="checkbox" class="checkbox" checked="true">
+					{{else}}
+					<input type="checkbox" class="checkbox" >
+				{{/if}}
+				</span>
+				
+			{{else}}
+				<label class="record-label span10 tright" data-name="activate_contacts">
+					{{LBL_JOB_NOT_AVAILABLE}}
+				</label>
+			{{/if}}	
+			</span>
+			{{/if}}
+		</div>
+		</div>
+			<span class="contacts normal index" data-fieldname="fieldset_contacts">
+				<form class="form-horizontal" role="form">
+					<div class="form-group row-fluid " data-name="contact_google" data-type="bool">
+						<label class="span2 control-label" data-name="contact_google">
+							{{LBL_CALENDAR_GOOGLE}}
+						</label>
+						<span class="span10" data-fieldname="contacts_google">
+							{{#if contacts_google}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+					
+					<div class="form-group row-fluid " data-name="contact_sugar" data-type="bool">
+						<label class="span2 control-label" data-name="contact_sugar">
+							{{LBL_CALENDAR_SUGAR}}
+						</label>
+						<span class="span10" data-fieldname="contacts_sugar">
+							{{#if contacts_sugar}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+					
+				</form>
+			</span>
+		</div>
+	
+	{{#if isOnsite}}
+		<div class="panel_body">
+			<div class="row-fluid">
+			<div style="border-bottom: 2px solid #000;float: left; width: 100%; height: 20px;">
+			<div class="span10 h2" data-type="fieldset-with-labels" data-name="fieldset_documents">
+				{{LBL_DOCUMENTS_FIELDSET}}
+			</div>
+			{{#if isAdmin}}
+			<span class="span2" data-name="activate_documents" data-type="bool">
+			{{#if activate_documents_created}}
+				<label class="record-label span10 tright" data-name="activate_documents">
+					{{LBL_ACTIVATE_JOB}}
+				</label>
+				<span data-fieldname="activate_documents" class="span2">
+				
+				{{#if activate_documents}}
+					<input type="checkbox" class="checkbox" checked="true">
+					{{else}}
+					<input type="checkbox" class="checkbox" >
+				{{/if}}
+				</span>
+				
+			{{else}}
+				<label class="record-label span10 tright" data-name="activate_documents">
+					{{LBL_JOB_NOT_AVAILABLE}}
+				</label>
+			{{/if}}	
+			</span>
+			{{/if}}
+			</div>
+			</div>
+			<span class="documents normal index" data-fieldname="fieldset_documents">
+				<form class="form-horizontal" role="form">
+					<div class="form-group row-fluid " data-name="documents_google" data-type="bool">
+						<label class="span2 control-label" data-name="documents_google">
+							{{LBL_CALENDAR_GOOGLE}}
+						</label>
+						<span class="span10" data-fieldname="documents_google">
+							{{#if documents_google}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+					
+					<div class="form-group row-fluid " data-name="documents_sugar" data-type="bool">
+						<label class="span2 control-label" data-name="documents_sugar">
+							{{LBL_CALENDAR_SUGAR}}
+						</label>
+						<span class="span10" data-fieldname="documents_sugar">
+							{{#if documents_sugar}}
+								<input type="checkbox" class="checkbox" checked="true">
+								{{else}}
+								<input type="checkbox" class="checkbox" >
+							{{/if}}
+						</span>
+					</div>
+					
+				</form>
+			</span>
+
+		</div>
+	{{/if}}
+	{{#if archive_email}}
+	{{#if isAdmin}}
+		<div class="panel_body">
+			<div class="row-fluid">
+			<div style="border-bottom: 2px solid #000;float: left; width: 100%;height: 20px;">
+			<div class="span10 h2" data-type="fieldset-with-labels" data-name="fieldset_archive_emails">
+				{{LBL_ARCHIVE_EMAILS_FIELDSET}}
+			</div>
+			{{#if isAdmin}}
+			<span class="span2" data-name="activate_archive_emails" data-type="bool">
+			{{#if activate_archive_emails_created}}
+				<label class="record-label span10 tright" data-name="activate_archive_emails">
+					{{LBL_ACTIVATE_JOB}}
+				</label>
+				<span data-fieldname="activate_archive_emails" class="span2">
+				{{#if activate_archive_emails}}
+					<input type="checkbox" class="checkbox" checked="true">
+					{{else}}
+					<input type="checkbox" class="checkbox" >
+				{{/if}}
+				</span>
+				
+			{{else}}
+				<label class="record-label span10 tright" data-name="activate_archive_emails">
+					{{LBL_JOB_NOT_AVAILABLE}}
+				</label>
+			{{/if}}	
+			</span>
+			{{/if}}
+			</div>
+			</div>
+		</div>
+	{{/if}}
+	{{/if}}
+	</div>
+</div>
+{{/if}}
