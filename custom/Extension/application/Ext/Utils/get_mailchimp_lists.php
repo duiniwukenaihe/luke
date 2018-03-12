@@ -12,7 +12,7 @@ function MailChimpLists() {
             $id = $list['id'];
             $name = $list['name'];
             if(!empty($admin->settings['mailchimp_'.$id])) {
-                $old = json_decode($admin->settings['mailchimp_'.$id]);
+                $old = !is_array($admin->settings['mailchimp_'.$id]) ? json_decode($admin->settings['mailchimp_'.$id]) : (object) $admin->settings['mailchimp_'.$id];
                 if(!empty($old->sync_mailchimp_list)) {
                     $old->mailchimp_list_name = $name;
                     $admin->saveSetting("mailchimp", $id, json_encode($old));

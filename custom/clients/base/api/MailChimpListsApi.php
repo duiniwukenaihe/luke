@@ -60,9 +60,11 @@ class MailChimpListsApi extends SugarApi {
                     $lists = array();
                     if(!empty($list_ids) && is_array($list_ids) && count($list_ids) > 0) {
                         foreach($list_ids as $list_id) {
-                            $listConfig = json_decode($admin->settings['mailchimp_'.$list_id]);
-                            if(!empty($listConfig)) {
-                                $lists[$list_id] = $listConfig->mailchimp_list_name;
+                            if(!empty($list_id)) {
+                                $listConfig = !is_array($admin->settings['mailchimp_'.$list_id]) ? json_decode($admin->settings['mailchimp_'.$list_id]) : (object) $admin->settings['mailchimp_'.$list_id];
+                                if(!empty($listConfig)) {
+                                    $lists[$list_id] = $listConfig->mailchimp_list_name;
+                                }
                             }
                         }
                         return $lists;

@@ -35,7 +35,7 @@ class MailChimpAdministration {
             sugar_die($GLOBALS['app_strings']['ERR_NOT_ADMIN']);
         }
         $admin = new Administration();
-        $admin->retrieveSettings();
+        $admin->retrieveSettings('mailchimp', true);
         $this->settings = $admin->settings;
     }
 
@@ -159,7 +159,7 @@ class MailChimpAdministration {
             $mailchimp_connector = new MailChimpConnector;
             $list_fields = $mailchimp_connector->getListFields($mailchimp_list_id);
             if(!empty($this->settings['mailchimp_'.$mailchimp_list_id])) {
-                $old = json_decode($this->settings['mailchimp_'.$mailchimp_list_id]);
+                $old = !is_array($this->settings['mailchimp_'.$mailchimp_list_id]) ? json_decode($this->settings['mailchimp_'.$mailchimp_list_id]) : (object) $this->settings['mailchimp_'.$mailchimp_list_id];
             }
             if(!empty($list_fields) && is_array($list_fields) && count($list_fields) > 0) {
                 foreach($list_fields as $field) {
@@ -252,7 +252,7 @@ class MailChimpAdministration {
         }
         
         if(!empty($this->settings['mailchimp_Contacts'])) {
-            $old['Contacts'] = json_decode(base64_decode($this->settings['mailchimp_Contacts']));
+            $old['Contacts'] = !is_array(base64_decode($this->settings['mailchimp_Contacts'])) ? json_decode(base64_decode($this->settings['mailchimp_Contacts'])) : (object) base64_decode($this->settings['mailchimp_Contacts']);
         }
 
         return array('admins' => $admins, 'lists' => $lists, 'account_types' => $account_types, 'old' => $old);

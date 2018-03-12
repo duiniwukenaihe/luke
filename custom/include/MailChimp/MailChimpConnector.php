@@ -148,7 +148,7 @@ class MailChimpConnector {
                 //Sync New subscriber from Sugar to MailChimp
                 $subscribers = $this->getTargetListSubscribers($targetListId);
                 if(!empty($subscribers)) {
-                    $listConfig = json_decode($this->settings['mailchimp_'.$list_id]);
+                    $listConfig = !is_array($this->settings['mailchimp_'.$list_id]) ? json_decode($this->settings['mailchimp_'.$list_id]) : (object) $this->settings['mailchimp_'.$list_id];
                     if(!empty($listConfig)) {
                         foreach($subscribers as $subscriber) {
                             $table_name = $subscriber->table_name;
@@ -195,7 +195,7 @@ class MailChimpConnector {
         $member = $this->list->members($list_id, '', $this->default['member_fields']);
         if(isset($member['total_items']) && $member['total_items'] > 0) {
             $members = $member['members'];
-            $listConfig = json_decode($this->settings['mailchimp_'.$list_id]);
+            $listConfig = !is_array($this->settings['mailchimp_'.$list_id]) ? json_decode($this->settings['mailchimp_'.$list_id]) : (object) $this->settings['mailchimp_'.$list_id];
             $syncModule = $listConfig->sync_module;
             $syncModuleToLower = strtolower($syncModule);
             $field_mapping = $listConfig->$syncModuleToLower;
@@ -300,7 +300,7 @@ class MailChimpConnector {
             $list_ids = $args['list_ids'];
             if(!empty($list_ids) && is_array($list_ids) && count($list_ids) > 0) {
                 foreach($list_ids as $list_id) {
-                    $listConfig = json_decode($this->settings['mailchimp_'.$list_id]);
+                    $listConfig = !is_array($this->settings['mailchimp_'.$list_id]) ? json_decode($this->settings['mailchimp_'.$list_id]) : (object) $this->settings['mailchimp_'.$list_id];
                     if(!empty($listConfig)) {
                         $response_data[$list_id] = $listConfig->mailchimp_list_name;
                     }
@@ -333,7 +333,7 @@ class MailChimpConnector {
             return $this->handleDashletData($args);
         } else {
             $list_id = $args['data']['list_id'];
-            $listConfig = json_decode($this->settings['mailchimp_'.$list_id]);
+            $listConfig = !is_array($this->settings['mailchimp_'.$list_id]) ? json_decode($this->settings['mailchimp_'.$list_id]) : (object) $this->settings['mailchimp_'.$list_id];
             $syncModule = $listConfig->sync_module;
             //When email is updated in MailChimp then both profile and then upemail triggers will call in two different requests
             if($type == 'upemail') {
@@ -712,7 +712,7 @@ class MailChimpConnector {
                 $account_type = $account->account_type;
             }
             if(!empty($account_type)) {
-                $contacts_lists = json_decode(base64_decode($this->settings['mailchimp_Contacts']));
+                $contacts_lists = !is_array(base64_decode($this->settings['mailchimp_Contacts'])) ? json_decode(base64_decode($this->settings['mailchimp_Contacts'])) : (object) base64_decode($this->settings['mailchimp_Contacts']);
                 if(!empty($contacts_lists->$account_type) && is_array($contacts_lists->$account_type) && count($contacts_lists->$account_type) > 0) {
                     $contacts_list_ids = $contacts_lists->$account_type;
                     if($bean->load_relationship($link)) {
