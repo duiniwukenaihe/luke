@@ -178,37 +178,44 @@ array (
             'fields' => 
             array (
               0 => 'parent_name',
-              1 => 'assigned_user_name',
+              1 => 
+              array (
+              ),
               2 => 'date_start',
-              3 => 'priority',
+              3 => 'status',
               4 => 'date_due',
-              5 => 'status',
+              5 => 'priority',
               6 => 
-              array (
-                'name' => 'contact_name',
-                'span' => 6,
-              ),
-              7 => 
-              array (
-                'span' => 6,
-              ),
-              8 => 
               array (
                 'name' => 'description',
                 'span' => 12,
               ),
+              7 => 
+              array (
+                'name' => 'contact_name',
+                'span' => 6,
+              ),
+              8 => 
+              array (
+                'name' => 'is_realtor_deficiency_c',
+                'label' => 'LBL_IS_REALTOR_DEFICIENCY',
+                'span' => 6,
+              ),
               9 => 
               array (
-                'name' => 'team_name',
+                'name' => 'dri_workflow_sort_order',
+                'label' => 'LBL_DRI_WORKFLOW_SORT_ORDER',
               ),
               10 => 
               array (
+                'name' => 'is_production_deficiency_c',
+                'label' => 'LBL_IS_PRODUCTION_DEFICIENCY',
               ),
               11 => 
               array (
-                'name' => 'tag',
-                'span' => 12,
+                'name' => 'team_name',
               ),
+              12 => 'assigned_user_name',
             ),
           ),
           2 => 
@@ -308,6 +315,7 @@ array (
               ),
               5 => 
               array (
+                'name' => 'tag',
               ),
             ),
           ),
