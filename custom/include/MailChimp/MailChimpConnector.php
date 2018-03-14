@@ -200,7 +200,7 @@ class MailChimpConnector {
             $syncModuleToLower = strtolower($syncModule);
             $field_mapping = $listConfig->$syncModuleToLower;
             if($syncModule && $field_mapping) {
-                foreach($members as $index=>$item) {
+                foreach($members as $item) {
                     $subscriber_id = $item['id'];
                     $merge_fields = $item['merge_fields'];
                     $bean = $this->getRelatedSubscriber($subscriber_id, $syncModule, $list_id);
@@ -220,6 +220,10 @@ class MailChimpConnector {
                         $bean->last_sync_date = $timedate->nowDb();
                         $bean->save();
                         // For new record build its relationship with list
+                        if($bean->load_relationship('prospect_lists')) {
+                            $bean->prospect_lists->add($this->getTargetListId($list_id));
+                        }
+                    } else {
                         if($bean->load_relationship('prospect_lists')) {
                             $bean->prospect_lists->add($this->getTargetListId($list_id));
                         }
@@ -361,7 +365,7 @@ class MailChimpConnector {
                         $table_name = $bean->table_name;
                         $field_mapping = $listConfig->$table_name;
                         if($field_mapping) {
-                            $beanId = (isset($bean->id) && !empty($bean->id)) ? $bean->id : '';
+                            $beanId = !empty($bean->id) ? $bean->id : '';
                             if($type == 'profile' && empty($beanId)) {
                                 //Ignore the update if profile is updated but bean id is not found - refered as email update.
                                 return false;
@@ -738,20 +742,18 @@ class MailChimpConnector {
     {
         global $db;
         $module = $arguments['module'];
-        $link = $arguments['link'];
+        $link = ucfirst($arguments['link']);
         $related_id = $arguments['related_id'];
-        if($module == 'ProspectLists') {
-            $list_id = $bean->mailchimp_list;
-            if($list_id) {
-                $where = array(
-                    'equals' => array(
-                        'id' => $related_id
-                    )
-                );
-                $result = $this->runSugarQuery(ucfirst($link), array('subscriber_hash'), $where, 1);
-                if($result) {
-                    $this->list->deleteMember($list_id, $result[0]['subscriber_hash']);
-                }
+        $list_id = isset($bean->mailchimp_list) ? $bean->mailchimp_list : '';
+        if($module == 'ProspectLists' && !empty($list_id) && !empty($link) && in_array($link, $this->targetModules)) {
+            $where = array(
+                'equals' => array(
+                    'id' => $related_id
+                )
+            );
+            $result = $this->runSugarQuery($link, array('subscriber_hash'), $where, 1);
+            if(!empty($result) && !empty($result[0]) && !empty($result[0]['subscriber_hash'])) {
+                $this->list->deleteMember($list_id, $result[0]['subscriber_hash']);
             }
         }
     }
@@ -764,18 +766,24 @@ class MailChimpConnector {
      * @return array|bool
      */
     private function runSugarQuery($module, $select = array(), $where = array(), $limit = false) {
-        $bean = BeanFactory::newBean($module);
-        $SugarQuery = new SugarQuery();
-        $SugarQuery->select($select);
-        $SugarQuery->from($bean, array('team_security' => false));
-        $this->prepareSugarQueryWhere($SugarQuery, $where);
-        if($limit) {
-            $SugarQuery->limit($limit);
-        }
-        $result = $SugarQuery->execute();
-        $count = count($result);
-        if($count > 0) {
-            return $result;
+        if(!empty($module)) {
+            $bean = BeanFactory::newBean($module);
+            $SugarQuery = new SugarQuery();
+            $SugarQuery->from($bean, array('team_security' => false));
+            if(!empty($select)) {
+                $SugarQuery->select($select);
+            }
+            if(!empty($where)) {
+                $this->prepareSugarQueryWhere($SugarQuery, $where);
+            }
+            if($limit) {
+                $SugarQuery->limit($limit);
+            }
+            $result = $SugarQuery->execute();
+            $count = count($result);
+            if($count > 0) {
+                return $result;
+            }
         }
         return false;
     }
