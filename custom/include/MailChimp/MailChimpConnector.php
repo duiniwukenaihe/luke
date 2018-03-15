@@ -223,10 +223,6 @@ class MailChimpConnector {
                         if($bean->load_relationship('prospect_lists')) {
                             $bean->prospect_lists->add($this->getTargetListId($list_id));
                         }
-                    } else {
-                        if($bean->load_relationship('prospect_lists')) {
-                            $bean->prospect_lists->add($this->getTargetListId($list_id));
-                        }
                     }
                 }
             } else {
